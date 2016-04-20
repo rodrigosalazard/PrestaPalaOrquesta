@@ -40,11 +40,11 @@
                     <br/>
                     <br/>
                     <h:form>
-                        <p:ajax update="nombre,appPaterno,appMaterno,correo,calle,num,colonia,delegacion,codigopostal,telefono,contrasena" listener="#{mBUsuario.getUsuario()}" 
+                        <p:ajax update="nombre,appPaterno,appMaterno,correo,calle,num,colonia,delegacion,codigopostal,telefono,contrasena" listener="#{mBUsuario.getUsuarios()}" 
                                 event="click" process="@this"/>
                         
                         
-                    <h:panelGrid columns="3">
+                        <h:panelGrid columns="3" cellpadding="5">
                         <h:outputText value="Nombre :" />
                         <p:inputText id="nombre" value="#{mBUsuario.nombre}">
                         </p:inputText>

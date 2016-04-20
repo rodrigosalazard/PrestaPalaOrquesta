@@ -35,16 +35,16 @@
                 <br/>
                 <h:form>
                     <h:panelGrid columns="1">
-                        <p:commandButton value=" Editar información " 
+                        <p:commandButton value="Editar Información " 
                                        update =""  action="administrarCuenta2IH" styleClass="ui-priority-primary" />
                         <br/>
-                        <p:commandButton value=" Subir Artículo " 
-                                         action="administrarCuentaIH" styleClass="ui-priority-primary" />
+                        <p:commandButton value="Subir Artículo " 
+                                         update="" action="subirArticulo" styleClass="ui-priority-primary" />
                         <br/>
-                        <p:commandButton value=" Ver mis Artículos" 
-                                         action="index" styleClass="ui-priority-primary" />
+                        <p:commandButton value="Ver mis Artículos" 
+                                         update="" action="index" styleClass="ui-priority-primary" />
                         <br/>
-                        <p:commandButton value=" Eliminar Cuenta " action="#{mBUsuario.eliminarUsuario()}" styleClass="ui-priority-primary" />
+                        <p:commandButton value="Eliminar Cuenta " action="#{mBUsuario.eliminarUsuario()}" styleClass="ui-priority-primary" />
                         <br/>
                     </h:panelGrid>
                     <br/>

@@ -38,7 +38,7 @@ public class MBUsuario {
     private String msn;
     
     public MBUsuario(){
-}
+    }
 
     /**
      * @return the correo
@@ -241,7 +241,7 @@ return "administrarCuenta2IH";
         try {
             tmp.setCorreo(getCorreo());
             tmp.setNombre(getNombre());
-            tmp.setApematerno(appPaterno);
+            tmp.setApematerno(appMaterno);
             tmp.setApepaterno(appPaterno);
             tmp.setCalle(calle);
             tmp.setColonia(colonia);
