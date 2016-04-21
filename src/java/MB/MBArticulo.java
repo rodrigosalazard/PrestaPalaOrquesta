@@ -8,20 +8,17 @@ package MB;
 import Controlador.ArticuloDaoHibernate;
 import DAO.Articulo;
 import java.io.File;
-import java.math.BigDecimal;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 /**
  *
  * @author fernando
  */
-@Named(value = "mBArticulo")
-@Dependent
+@ManagedBean
+
 public class MBArticulo {
     
-    private BigDecimal idArticulo;
+    private Integer idarticulo;
     private boolean disponible;
     private String descripcion;
     private String categoria;
@@ -34,17 +31,17 @@ public class MBArticulo {
     }
 
     /**
-     * @return the idArticulo
+     * @return the idarticulo
      */
-    public BigDecimal getIdArticulo() {
-        return idArticulo;
+    public Integer getIdArticulo() {
+        return idarticulo;
     }
 
     /**
-     * @param idArticulo the idArticulo to set
+     * @param idarticulo the idArticulo to set
      */
-    public void setIdArticulo(BigDecimal idArticulo) {
-        this.idArticulo = idArticulo;
+    public void setIdArticulo(Integer idarticulo) {
+        this.idarticulo = idarticulo;
     }
 
     /**
@@ -83,7 +80,7 @@ public class MBArticulo {
     }
 
     /**
-     * @param descripción the descripción to set
+     * @param descripcion the descripción to set
      */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
@@ -118,22 +115,23 @@ public class MBArticulo {
         ArticuloDaoHibernate articuloDAO = new ArticuloDaoHibernate();
         List<Articulo> lista = articuloDAO.findAll();
         for (Articulo temp : lista) {
-            if (this.idArticulo.equals((temp.getIdarticulo()))) {
+            if (this.idarticulo.equals((temp.getIdarticulo()))) {
                 this.disponible = temp.isDisponible();
                 this.descripcion = temp.getDescripcion();
                 break;
             }
 
         }
-return "administrarCuenta2IH";
+        return "administrarCuenta2IH";
     }
 
     public void guarda() {
         Articulo tmp = new Articulo();
+        
         try {
-            tmp.setIdarticulo(getIdArticulo());
-            tmp.setDisponible(isDisponible());
-            tmp.setDescripcion(getDescripcion());
+            tmp.setIdarticulo(idarticulo);
+            tmp.setDisponible(disponible);
+            tmp.setDescripcion(descripcion);
             
             
             ArticuloDaoHibernate articuloDAO = new ArticuloDaoHibernate();
@@ -142,7 +140,7 @@ return "administrarCuenta2IH";
             setMsn("El articulo se ha creado satisfactoriamente");
         } catch (Exception e) {
 
-            System.out.println("Hubo un error al intentar crear el articuloa" + e);
+            System.out.println("Hubo un error al intentar crear el articulo" + e);
         }
     }
     
@@ -167,18 +165,20 @@ return "administrarCuenta2IH";
         }
         return saludo;                
     }
+     * @return 
     */
     
     public String eliminarArticulo(){
         ArticuloDaoHibernate articuloDAO = new ArticuloDaoHibernate();
         List<Articulo> lista = articuloDAO.findAll();
         for (Articulo temp:  lista) {
-            if (this.idArticulo.equals((temp.getIdarticulo()))) {
+            if (this.idarticulo.equals((temp.getIdarticulo()))) {
                 articuloDAO.delete(temp);
                 break;
             }
                 setMsn("El artículo ha sido eliminado");    
-        }return "index";
+        }
+        return "index";
     }
 
     /**

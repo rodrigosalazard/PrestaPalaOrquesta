@@ -4,9 +4,9 @@
 <!-- Generated 13/04/2016 04:25:15 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.Articulo" table="articulo" schema="public" optimistic-lock="version">
-        <id name="idarticulo" type="big_decimal">
+        <id name="idarticulo" type="integer">
             <column name="idarticulo" precision="131089" scale="0" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="disponible" type="boolean">
             <column name="disponible" not-null="true" />

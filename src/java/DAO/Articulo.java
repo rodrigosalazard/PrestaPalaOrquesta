@@ -2,7 +2,6 @@ package DAO;
 // Generated 13/04/2016 04:25:11 PM by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +11,7 @@ import java.util.Set;
 public class Articulo  implements java.io.Serializable {
 
 
-     private BigDecimal idarticulo;
+     private Integer idarticulo;
      private boolean disponible;
      private String descripcion;
      private byte[] imagen;
@@ -30,12 +29,12 @@ public class Articulo  implements java.io.Serializable {
     }
 
 	
-    public Articulo(BigDecimal idarticulo, boolean disponible, String descripcion) {
+    public Articulo(Integer idarticulo, boolean disponible, String descripcion) {
         this.idarticulo = idarticulo;
         this.disponible = disponible;
         this.descripcion = descripcion;
     }
-    public Articulo(BigDecimal idarticulo, boolean disponible, String descripcion, byte[] imagen, Set libros, Set instrumentos, Set prestas, Set musicas, Set solicitas, Estado estado, Set accesorios, Set partituras, Set sonidos) {
+    public Articulo(Integer idarticulo, boolean disponible, String descripcion, byte[] imagen, Set libros, Set instrumentos, Set prestas, Set musicas, Set solicitas, Estado estado, Set accesorios, Set partituras, Set sonidos) {
        this.idarticulo = idarticulo;
        this.disponible = disponible;
        this.descripcion = descripcion;
@@ -51,11 +50,11 @@ public class Articulo  implements java.io.Serializable {
        this.sonidos = sonidos;
     }
    
-    public BigDecimal getIdarticulo() {
+    public Integer getIdarticulo() {
         return this.idarticulo;
     }
     
-    public void setIdarticulo(BigDecimal idarticulo) {
+    public void setIdarticulo(Integer idarticulo) {
         this.idarticulo = idarticulo;
     }
     public boolean isDisponible() {

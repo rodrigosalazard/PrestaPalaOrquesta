@@ -4,7 +4,7 @@
 <!-- Generated 13/04/2016 04:25:15 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.Accesorio" table="accesorio" schema="public" optimistic-lock="version">
-        <id name="idaccesorio" type="big_decimal">
+        <id name="idaccesorio" type="integer">
             <column name="idaccesorio" precision="131089" scale="0" />
             <generator class="assigned" />
         </id>

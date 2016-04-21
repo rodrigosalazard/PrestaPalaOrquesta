@@ -38,28 +38,21 @@
                     <br/>
                     <br/>
                     <h:form>
-                        <p:ajax update="idArticulo,disponible,descripcion,categoria,imagen" listener="#{mBArticulo.getArticulos()}" 
-                                event="click" process="@this"/>
+                        
                         
                         
                         <h:panelGrid columns="3" cellpadding="5">
                             
                         <h:outputText value="IdArtículo :" />
-                        <p:inputText id="idArticulo" value="#{mBArticulo.idArticulo}">
+                        <p:inputText id="idarticulo" value="#{mBArticulo.idArticulo}">
                         </p:inputText>
-                       
                         <br/>
-                        
                         <h:outputText value="Disponible : " />
                         <p:selectBooleanCheckbox id ="disponible" value="#{mBArticulo.disponible}" />
-                        
                         <br/>
-                        
-                        
                         <h:outputText value="Descripción : " />
                         <p:inputText id="descripcion" value="#{mBArticulo.descripcion}" >
                         </p:inputText>
-                        
                         <br/>
                         
                         <h:outputText value="Categoria : " />
@@ -70,11 +63,10 @@
                         <f:selectItem itemLabel="Accesorios" itemValue="4" />
                         </p:selectOneListbox>
                         <br/>
-                        
-                     
                         <br/>
-                            <p:commandButton value=" Aceptar " ajax="false" update="msn" action="#{mBArticulo.guarda()}" styleClass="ui-priority-primary" />
-                            <p:commandButton action="administrarCuentaIH"  value="Regresar"   />
+                            <p:commandButton value=" Aceptar " 
+                                             update="msn" action="#{mBArticulo.guarda()}" styleClass="ui-priority-primary" />
+                            <p:commandButton action="administrarCuentaIH" value="Regresar"   />
                     </h:panelGrid>
                     <br/>                        
                     <h:outputText id="msn" value="#{mBArticulo.msn}" />
