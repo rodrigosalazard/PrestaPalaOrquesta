@@ -5,11 +5,9 @@
  */
 package test;
 
-import Controlador.ArticuloDaoHibernate;
 import Controlador.UsuarioDaoHibernate;
 import Controlador.TelefonoDaoHibernate;
 import Controlador.ContrasenaDaoHibernate;
-import DAO.Articulo;
 import DAO.Usuario;
 import DAO.Contrasena;
 import DAO.Telefono;
@@ -39,15 +37,9 @@ public class test {
 //        for (Contrasena contrasenaD : listContrasena) {
 //            System.out.println(contrasenaD.toString());
   //      }
-        ArticuloDaoHibernate articuloDao = new ArticuloDaoHibernate();
         
-        Articulo articulo = new Articulo();
-        articulo.setIdarticulo(1);
-        articulo.setDisponible(true);
-        articulo.setDescripcion("Mi artículo es muy bueno y se encuentra en un buen estado");
-        articuloDao.save(articulo);
         
-       /* Usuario usuario = new Usuario();
+        Usuario usuario = new Usuario();
         Telefono telefono = new Telefono();
         Contrasena contrasena = new Contrasena();
         
@@ -77,7 +69,7 @@ public class test {
         System.out.println("Todo salio bien con el tercer insert");
         
         usuarioDao.delete(usuario);
-        System.out.println("Todo salio bien con el delete");*/
+        System.out.println("Todo salio bien con el delete");
     }
     
 }

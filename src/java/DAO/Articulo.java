@@ -14,7 +14,7 @@ public class Articulo  implements java.io.Serializable {
      private Integer idarticulo;
      private boolean disponible;
      private String descripcion;
-     private byte[] imagen;
+     
      private Set libros = new HashSet(0);
      private Set instrumentos = new HashSet(0);
      private Set prestas = new HashSet(0);
@@ -22,7 +22,6 @@ public class Articulo  implements java.io.Serializable {
      private Set solicitas = new HashSet(0);
      private Estado estado;
      private Set accesorios = new HashSet(0);
-     private Set partituras = new HashSet(0);
      private Set sonidos = new HashSet(0);
 
     public Articulo() {
@@ -34,11 +33,11 @@ public class Articulo  implements java.io.Serializable {
         this.disponible = disponible;
         this.descripcion = descripcion;
     }
-    public Articulo(Integer idarticulo, boolean disponible, String descripcion, byte[] imagen, Set libros, Set instrumentos, Set prestas, Set musicas, Set solicitas, Estado estado, Set accesorios, Set partituras, Set sonidos) {
+    public Articulo(Integer idarticulo, boolean disponible, String descripcion, byte[] imagen, Set libros, Set instrumentos, Set prestas, Set musicas, Set solicitas, Estado estado, Set accesorios, Set sonidos) {
        this.idarticulo = idarticulo;
        this.disponible = disponible;
        this.descripcion = descripcion;
-       this.imagen = imagen;
+       
        this.libros = libros;
        this.instrumentos = instrumentos;
        this.prestas = prestas;
@@ -46,7 +45,6 @@ public class Articulo  implements java.io.Serializable {
        this.solicitas = solicitas;
        this.estado = estado;
        this.accesorios = accesorios;
-       this.partituras = partituras;
        this.sonidos = sonidos;
     }
    
@@ -71,13 +69,7 @@ public class Articulo  implements java.io.Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public byte[] getImagen() {
-        return this.imagen;
-    }
     
-    public void setImagen(byte[] imagen) {
-        this.imagen = imagen;
-    }
     public Set getLibros() {
         return this.libros;
     }
@@ -127,13 +119,7 @@ public class Articulo  implements java.io.Serializable {
     public void setAccesorios(Set accesorios) {
         this.accesorios = accesorios;
     }
-    public Set getPartituras() {
-        return this.partituras;
-    }
     
-    public void setPartituras(Set partituras) {
-        this.partituras = partituras;
-    }
     public Set getSonidos() {
         return this.sonidos;
     }

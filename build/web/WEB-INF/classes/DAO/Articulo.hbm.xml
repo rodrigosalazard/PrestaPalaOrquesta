@@ -6,16 +6,13 @@
     <class name="DAO.Articulo" table="articulo" schema="public" optimistic-lock="version">
         <id name="idarticulo" type="integer">
             <column name="idarticulo" precision="131089" scale="0" />
-            <generator class="identity" />
+            <generator class="identity  " />
         </id>
         <property name="disponible" type="boolean">
             <column name="disponible" not-null="true" />
         </property>
         <property name="descripcion" type="string">
             <column name="descripcion" length="1000" not-null="true" />
-        </property>
-        <property name="imagen" type="binary">
-            <column name="imagen" />
         </property>
         <set name="libros" table="libro" inverse="true" lazy="true" fetch="select">
             <key>
@@ -53,12 +50,6 @@
                 <column name="idarticulo" precision="131089" scale="0" not-null="true" />
             </key>
             <one-to-many class="DAO.Accesorio" />
-        </set>
-        <set name="partituras" table="partitura" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="idarticulo" precision="131089" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="DAO.Partitura" />
         </set>
         <set name="sonidos" table="sonido" inverse="true" lazy="true" fetch="select">
             <key>

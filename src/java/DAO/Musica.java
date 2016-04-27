@@ -11,23 +11,23 @@ import java.util.Date;
 public class Musica  implements java.io.Serializable {
 
 
-     private BigDecimal idmusica;
+     private Integer idmusica;
      private Articulo articulo;
      private String autor;
      private String genero;
-     private Date ano;
+     private Integer ano;
      private String formato;
 
     public Musica() {
     }
 
 	
-    public Musica(BigDecimal idmusica, Articulo articulo, String formato) {
+    public Musica(Integer idmusica, Articulo articulo, String formato) {
         this.idmusica = idmusica;
         this.articulo = articulo;
         this.formato = formato;
     }
-    public Musica(BigDecimal idmusica, Articulo articulo, String autor, String genero, Date ano, String formato) {
+    public Musica(Integer idmusica, Articulo articulo, String autor, String genero, Integer ano, String formato) {
        this.idmusica = idmusica;
        this.articulo = articulo;
        this.autor = autor;
@@ -36,11 +36,11 @@ public class Musica  implements java.io.Serializable {
        this.formato = formato;
     }
    
-    public BigDecimal getIdmusica() {
+    public Integer getIdmusica() {
         return this.idmusica;
     }
     
-    public void setIdmusica(BigDecimal idmusica) {
+    public void setIdmusica(Integer idmusica) {
         this.idmusica = idmusica;
     }
     public Articulo getArticulo() {
@@ -64,11 +64,11 @@ public class Musica  implements java.io.Serializable {
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    public Date getAno() {
+    public Integer getAno() {
         return this.ano;
     }
     
-    public void setAno(Date ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
     public String getFormato() {

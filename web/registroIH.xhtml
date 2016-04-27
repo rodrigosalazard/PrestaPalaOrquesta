@@ -40,11 +40,9 @@
                     <br/>
                     <br/>
                     <h:form>
-                        
-                        
                     <h:panelGrid columns="3">
                         <h:outputText value="Nombre :" />
-                        <p:inputText id="nombre" value="#{mBUsuario.nombre}">
+                        <p:inputText id="dato33" value="#{mBUsuario.nombre}">
                         </p:inputText>
                         <br/>
                         <h:outputText value="Apellido Paterno : " />
@@ -88,11 +86,11 @@
                         <br/>
                         <br/>
                             <p:commandButton value=" Aceptar " 
-                                             update="msn" action="#{mBUsuario.guarda()}" styleClass="ui-priority-primary" />
+                                              action="#{mBUsuario.guarda()}" styleClass="ui-priority-primary" />
                             <p:commandButton action="index"  value="Regresar"   />
                     </h:panelGrid>
                     <br/>                        
-                    <h:outputText id="msn" value="#{mBUsuario.msn}" />
+                    
                     
                        
                 </h:form>

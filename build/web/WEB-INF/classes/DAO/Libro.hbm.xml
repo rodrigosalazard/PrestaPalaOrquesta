@@ -4,7 +4,7 @@
 <!-- Generated 13/04/2016 04:25:15 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.Libro" table="libro" schema="public" optimistic-lock="version">
-        <id name="idlibro" type="big_decimal">
+        <id name="idlibro" type="integer">
             <column name="idlibro" precision="131089" scale="0" />
             <generator class="assigned" />
         </id>
@@ -23,7 +23,7 @@
         <property name="genero" type="string">
             <column name="genero" length="50" />
         </property>
-        <property name="ano" type="date">
+        <property name="ano" type="integer">
             <column name="ano" length="13" />
         </property>
     </class>

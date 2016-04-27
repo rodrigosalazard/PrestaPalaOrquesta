@@ -4,14 +4,14 @@
 <!-- Generated 13/04/2016 04:25:15 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.Instrumento" table="instrumento" schema="public" optimistic-lock="version">
-        <id name="idinstrumento" type="big_decimal">
+        <id name="idinstrumento" type="integer">
             <column name="idinstrumento" precision="131089" scale="0" />
             <generator class="assigned" />
         </id>
         <many-to-one name="articulo" class="DAO.Articulo" fetch="select">
             <column name="idarticulo" precision="131089" scale="0" not-null="true" />
         </many-to-one>
-        <property name="ano" type="date">
+        <property name="ano" type="integer">
             <column name="ano" length="13" />
         </property>
         <property name="marca" type="string">

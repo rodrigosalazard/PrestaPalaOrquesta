@@ -11,9 +11,9 @@ import java.util.Date;
 public class Instrumento  implements java.io.Serializable {
 
 
-     private BigDecimal idinstrumento;
+     private Integer idinstrumento;
      private Articulo articulo;
-     private Date ano;
+     private Integer ano;
      private String marca;
      private String tipo;
      private String nombreinstrumento;
@@ -22,12 +22,12 @@ public class Instrumento  implements java.io.Serializable {
     }
 
 	
-    public Instrumento(BigDecimal idinstrumento, Articulo articulo, String tipo) {
+    public Instrumento(Integer idinstrumento, Articulo articulo, String tipo) {
         this.idinstrumento = idinstrumento;
         this.articulo = articulo;
         this.tipo = tipo;
     }
-    public Instrumento(BigDecimal idinstrumento, Articulo articulo, Date ano, String marca, String tipo, String nombreinstrumento) {
+    public Instrumento(Integer idinstrumento, Articulo articulo, Integer ano, String marca, String tipo, String nombreinstrumento) {
        this.idinstrumento = idinstrumento;
        this.articulo = articulo;
        this.ano = ano;
@@ -36,11 +36,11 @@ public class Instrumento  implements java.io.Serializable {
        this.nombreinstrumento = nombreinstrumento;
     }
    
-    public BigDecimal getIdinstrumento() {
+    public Integer getIdinstrumento() {
         return this.idinstrumento;
     }
     
-    public void setIdinstrumento(BigDecimal idinstrumento) {
+    public void setIdinstrumento(Integer idinstrumento) {
         this.idinstrumento = idinstrumento;
     }
     public Articulo getArticulo() {
@@ -50,11 +50,11 @@ public class Instrumento  implements java.io.Serializable {
     public void setArticulo(Articulo articulo) {
         this.articulo = articulo;
     }
-    public Date getAno() {
+    public Integer getAno() {
         return this.ano;
     }
     
-    public void setAno(Date ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
     public String getMarca() {

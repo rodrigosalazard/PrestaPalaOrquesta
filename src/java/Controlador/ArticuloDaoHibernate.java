@@ -17,7 +17,7 @@ public class ArticuloDaoHibernate extends AbstractDao {
     }
     
     /**
-     * Insert a new Usuario into the database.
+     * Insert a new Articulo into the database.
      *
      * @param articulo
      */
@@ -26,7 +26,7 @@ public class ArticuloDaoHibernate extends AbstractDao {
     }
 
     /**
-     * Updates a new Usuario into the database.
+     * Updates a new Articulo into the database.
      *
      * @param articulo
      */
