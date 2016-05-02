@@ -1,5 +1,5 @@
 package DAO;
-// Generated 13/04/2016 04:25:11 PM by Hibernate Tools 4.3.1
+// Generated 26/04/2016 03:15:50 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -11,9 +11,9 @@ import java.util.Date;
 public class Instrumento  implements java.io.Serializable {
 
 
-     private Integer idinstrumento;
+     private int idinstrumento;
      private Articulo articulo;
-     private Integer ano;
+     private int ano;
      private String marca;
      private String tipo;
      private String nombreinstrumento;

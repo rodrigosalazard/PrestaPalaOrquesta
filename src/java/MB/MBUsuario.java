@@ -10,13 +10,13 @@ import Controlador.UsuarioDaoHibernate;
 import DAO.Contrasena;
 import DAO.Telefono;
 import DAO.Usuario;
-import static com.sun.faces.facelets.util.Path.context;
+
+import java.io.Serializable;
 import java.util.List;
-import javax.faces.application.Application;
-import javax.faces.bean.ApplicationScoped;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 //import javax.faces.context.FacesContext;
 //import javax.servlet.http.HttpServletRequest;
 //import javax.faces.bean.ViewScoped;
@@ -31,10 +31,12 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 //@RequestScoped
 //@ViewScoped
-@ApplicationScoped
+@SessionScoped
 
 
-public class MBUsuario {
+
+
+public class MBUsuario implements Serializable{
     private String correo;
     private String nombre;
     private String appPaterno;
@@ -273,10 +275,11 @@ public class MBUsuario {
         return redirecciona;
     }
     
-       public void actualizar() {
+       public String actualizar() {
         Usuario tmp = new Usuario();
         Telefono tmp1 = new Telefono();
         Contrasena tmp2 = new Contrasena();
+        String redirecciona ="";
         try {
             tmp.setNombre(nombre);
             tmp.setCorreo(correo);
@@ -305,11 +308,14 @@ public class MBUsuario {
 
             
             msn = "El usuario se guardo correctamente";
+            redirecciona = "administrarCuentaIH";
         } catch (Exception e) {
 
             msn = "upss! Ocurrio un error " + e;
             System.out.println(" upss! Ocurrio un error.  " + e);
+            redirecciona = "administrarCuenta2IH";
         }
+        return redirecciona;
     }
  
     
@@ -333,6 +339,8 @@ public class MBUsuario {
             this.num = usuarioD.getNumero();
             this.telefono = usuarioD.getTelefono().getTelefono();
             
+            usuario = new Usuario(usuarioD.getCorreo(),usuarioD.getNombre(),usuarioD.getApematerno(),usuarioD.getApematerno(),usuarioD.getCalle(),usuarioD.getColonia(),usuarioD.getDelegacion(),usuarioD.getNumero(),usuarioD.getCodigopostal(),usuarioD.getTelefono(), usuarioD.getContrasena());
+            
         setMsn("Hola "+ usuarioD.getNombre() + " has iniciado Sesión" );
         saludo= "administrarCuentaIH";            
         
@@ -349,6 +357,7 @@ public class MBUsuario {
     
     public String cerrarSesion(){
 //        httpServletRequest.getSession().removeAttribute("sessionUsuario");
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         setMsn("Sesión Cerrada correctamente" );
         return "index";
     }

@@ -5,29 +5,40 @@
  */
 package MB;
 
-import Controlador.AccesorioDaoHibernate;
 import Controlador.ArticuloDaoHibernate;
 import Controlador.InstrumentoDaoHibernate;
 import Controlador.LibroDaoHibernate;
 import Controlador.MusicaDaoHibernate;
 import Controlador.SonidoDaoHibernate;
-import DAO.Accesorio;
+import Controlador.AccesorioDaoHibernate;
+
+
 import DAO.Articulo;
 import DAO.Instrumento;
 import DAO.Libro;
+import DAO.Usuario;
 import DAO.Musica;
 import DAO.Sonido;
+import DAO.Accesorio;
+        
+        
 import java.io.File;
-import java.util.Date;
 import java.util.List;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+
+
+
 /**
  *
  * @author fernando
  */
-@ManagedBean
+@ManagedBean 
+@RequestScoped  
+
 
 public class MBArticulo {
     
@@ -35,8 +46,14 @@ public class MBArticulo {
     private boolean disponible;
     private String descripcion;
     private String categoria;
-    private File imagen;
-    private String msn;
+    
+    //Istrumento
+    private Integer idinstrumento;
+    private Integer anoinstrumento;
+    private String marcainstrumento;
+    private String tipoinstrumento;
+    private String nombreinstrumento;
+    
     //Libro
     private Integer idlibro;
     private String editoriallibro;
@@ -44,29 +61,35 @@ public class MBArticulo {
     private String nombrelibro;
     private String generolibro;
     private Integer anolibro;
-    //Accesorio
-    private Integer idaccesorio;
-    private String tipoaccesorio;
-    private String nombreaccesorio;
-    private String marcaaccesorio;
-    //Istrumento
-    private Integer idinstrumento;
-    private Integer anoinstrumento;
-    private String marcainstrumento;
-    private String tipoinstrumento;
-    private String nombreinstrumento;
+    
     //Musica
     private Integer idmusica;
     private String autormusica;
     private String generomusica;
     private Integer anomusica;
     private String formatomusica;
+    
     //Sonido
     private Integer idsonido;
     private String nombresonido;
     private String tiposonido;
     private Double potenciasonido;
     private String marcasonido;
+    
+    //Accesorio
+    private Integer idaccesorio;
+    private String tipoaccesorio;
+    private String nombreaccesorio;
+    private String marcaaccesorio;
+    
+    
+    
+    
+    private String msn;
+    
+    @ManagedProperty("#{mBUsuario}")
+    private MBUsuario usuario;
+
     /**
      * Creates a new instance of MBArticulo
      */
@@ -143,17 +166,6 @@ public class MBArticulo {
         this.msn = msn;
     }
     
-    public File getImagen() {
-        return imagen;
-    }
-
-    /**
-     * @param imagen the imagen to set
-     */
-    public void setImagen(File imagen) {
-        this.imagen = imagen;
-    }
-    
      public String getArticulos() {
         ArticuloDaoHibernate articuloDAO = new ArticuloDaoHibernate();
         List<Articulo> lista = articuloDAO.findAll();
@@ -170,78 +182,105 @@ public class MBArticulo {
 
     public void guarda() {
         Articulo tmp = new Articulo();
-        Libro tmp1 = new Libro();
-        Accesorio tmp2 = new Accesorio();
-        Instrumento tmp3 = new Instrumento();
-        Musica tmp4 = new Musica();
-        Sonido tmp5 = new Sonido();
-                
+        Instrumento tmp1 = new Instrumento();
+        Libro tmp2 = new Libro();
+        Musica tmp3 = new Musica();
+        Sonido tmp4 = new Sonido();
+        Accesorio tmp5  = new Accesorio();
+        
         try {
+            //Articulo
             tmp.setIdarticulo(idarticulo);
             tmp.setDisponible(disponible);
             tmp.setDescripcion(descripcion);
-            System.out.println(categoria);
-            
+            tmp.setUsuario(usuario.getUsuario());
+
             ArticuloDaoHibernate articuloDAO = new ArticuloDaoHibernate();
             articuloDAO.save(tmp);
             
+           //Instrumento
+            InstrumentoDaoHibernate instrumentoDAO = new InstrumentoDaoHibernate();
+            tmp1.setArticulo(tmp);
+            tmp1.setIdinstrumento(idinstrumento);
+            tmp1.setNombreinstrumento(nombreinstrumento);
+            tmp1.setMarca(marcainstrumento);
+            tmp1.setAno(anoinstrumento);
+            tmp1.setTipo(tipoinstrumento);
+            instrumentoDAO.save(tmp1);
+            setMsn("El articulo se ha creado satisfactoriamente");
+            
             //Libro
             LibroDaoHibernate libroDAO = new LibroDaoHibernate();
-            tmp1.setArticulo(tmp);
-            tmp1.setIdlibro(idlibro);
-            tmp1.setEditorial(editoriallibro);
-            tmp1.setNombreautor(nombreautorlibro);
-            tmp1.setNombre(nombrelibro);
-            tmp1.setGenero(generolibro);
-            tmp1.setAno(anolibro);
-            libroDAO.save(tmp1);
-            //Accesorio
-            AccesorioDaoHibernate accesorioDAO = new AccesorioDaoHibernate();
             tmp2.setArticulo(tmp);
-            tmp2.setIdaccesorio(idaccesorio);
-            tmp2.setNombre(nombreaccesorio);
-            tmp2.setMarca(marcaaccesorio);
-            tmp2.setTipo(tipoaccesorio);
-            accesorioDAO.save(tmp2);
-            //Instrumento
-            InstrumentoDaoHibernate instrumentoDAO = new InstrumentoDaoHibernate();
-            tmp3.setArticulo(tmp);
-            tmp3.setIdinstrumento(idinstrumento);
-            tmp3.setNombreinstrumento(nombreinstrumento);
-            tmp3.setMarca(marcainstrumento);
-            tmp3.setAno(anoinstrumento);
-            tmp3.setTipo(tipoinstrumento);
-            instrumentoDAO.save(tmp3);
+            tmp2.setIdlibro(idlibro);
+            tmp2.setEditorial(editoriallibro);
+            tmp2.setNombreautor(nombreautorlibro);
+            tmp2.setNombre(nombrelibro);
+            tmp2.setGenero(generolibro);
+            tmp2.setAno(anolibro);
+            libroDAO.save(tmp2);
+            setMsn("El articulo se ha creado satisfactoriamente");
             //Musica
             MusicaDaoHibernate musicaDAO = new MusicaDaoHibernate();
-            tmp4.setArticulo(tmp);
-            tmp4.setIdmusica(idmusica);
-            tmp4.setAutor(autormusica);
-            tmp4.setFormato(formatomusica);
-            tmp4.setGenero(generomusica);
-            tmp4.setAno(anomusica);
-            musicaDAO.save(tmp4);
+            tmp3.setArticulo(tmp);
+            tmp3.setIdmusica(idmusica);
+            tmp3.setAutor(autormusica);
+            tmp3.setFormato(formatomusica);
+            tmp3.setGenero(generomusica);
+            tmp3.setAno(anomusica);
+            musicaDAO.save(tmp3);
+            setMsn("El articulo se ha creado satisfactoriamente");
             //Sonido
             SonidoDaoHibernate sonidoDAO = new SonidoDaoHibernate();
+            tmp4.setArticulo(tmp);
+            tmp4.setIdsonido(idsonido);
+            tmp4.setNombre(nombresonido);
+            tmp4.setMarca(marcasonido);
+            tmp4.setPotencia(potenciasonido);
+            tmp4.setTipo(tiposonido);
+            sonidoDAO.save(tmp4);
+            setMsn("El articulo se ha creado satisfactoriamente");
+            //Accesorio
+            AccesorioDaoHibernate accesorioDAO = new AccesorioDaoHibernate();
             tmp5.setArticulo(tmp);
-            tmp5.setIdsonido(idsonido);
-            tmp5.setNombre(nombresonido);
-            tmp5.setMarca(marcasonido);
-            tmp5.setPotencia(potenciasonido);
-            tmp5.setTipo(tiposonido);
-            sonidoDAO.save(tmp5);
+            tmp5.setIdaccesorio(idaccesorio);
+            tmp5.setNombre(nombreaccesorio);
+            tmp5.setMarca(marcaaccesorio);
+            tmp5.setTipo(tipoaccesorio);
+            accesorioDAO.save(tmp5);
             
+
             
-           //FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Tu articulo se ha subido satisfactoriamente"));
             setMsn("El articulo se ha creado satisfactoriamente");
         } catch (Exception e) {
-
+        e.printStackTrace();
             System.out.println("Hubo un error al intentar crear el articulo" + e);
         }
     }
     
     
- 
+  /**  public String inicioSesion(){
+
+  List<Articulo> listUsuario;
+  UsuarioDaoHibernate usuarioDao = new UsuarioDaoHibernate();
+  listUsuario= usuarioDao.findAll();
+  String saludo = "";
+        for (Articulo usuario : listUsuario) {
+            System.out.println("AAA"+usuario.toString());
+         if(this.correo.equals(usuario.getCorreo()) && this.contrasena.equals(usuario.getContrasena().getContrasena())){
+             System.out.println(usuario.toString());
+        setMsn("Hola "+ usuario.getNombre() + " Bienvenido has iniciado Sesión" );
+        saludo= "administrarCuentaIH";            
+        break;
+            }else {
+                setMsn("Correo o contraseña incorrecta");
+                saludo= "index";                    
+          }    
+        }
+        return saludo;                
+    }
+     * @return 
+    */
     
     public String eliminarArticulo(){
         ArticuloDaoHibernate articuloDAO = new ArticuloDaoHibernate();
@@ -254,6 +293,90 @@ public class MBArticulo {
                 setMsn("El artículo ha sido eliminado");    
         }
         return "index";
+    }
+
+    /**
+     * @return the usuario
+     */
+    public MBUsuario getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(MBUsuario usuario) {
+        this.usuario = usuario;
+    }
+
+    /**
+     * @return the idinstrumento
+     */
+    public Integer getIdinstrumento() {
+        return idinstrumento;
+    }
+
+    /**
+     * @param idinstrumento the idinstrumento to set
+     */
+    public void setIdinstrumento(Integer idinstrumento) {
+        this.idinstrumento = idinstrumento;
+    }
+
+    /**
+     * @return the anoinstrumento
+     */
+    public Integer getAnoinstrumento() {
+        return anoinstrumento;
+    }
+
+    /**
+     * @param anoinstrumento the anoinstrumento to set
+     */
+    public void setAnoinstrumento(Integer anoinstrumento) {
+        this.anoinstrumento = anoinstrumento;
+    }
+
+    /**
+     * @return the marcainstrumento
+     */
+    public String getMarcainstrumento() {
+        return marcainstrumento;
+    }
+
+    /**
+     * @param marcainstrumento the marcainstrumento to set
+     */
+    public void setMarcainstrumento(String marcainstrumento) {
+        this.marcainstrumento = marcainstrumento;
+    }
+
+    /**
+     * @return the tipoinstrumento
+     */
+    public String getTipoinstrumento() {
+        return tipoinstrumento;
+    }
+
+    /**
+     * @param tipoinstrumento the tipoinstrumento to set
+     */
+    public void setTipoinstrumento(String tipoinstrumento) {
+        this.tipoinstrumento = tipoinstrumento;
+    }
+
+    /**
+     * @return the nombreinstrumento
+     */
+    public String getNombreinstrumento() {
+        return nombreinstrumento;
+    }
+
+    /**
+     * @param nombreinstrumento the nombreinstrumento to set
+     */
+    public void setNombreinstrumento(String nombreinstrumento) {
+        this.nombreinstrumento = nombreinstrumento;
     }
 
     /**
@@ -327,143 +450,17 @@ public class MBArticulo {
     }
 
     /**
-     * @return the ano
+     * @return the anolibro
      */
     public Integer getAnolibro() {
         return anolibro;
     }
 
     /**
-     * @param ano the ano to set
+     * @param anolibro the anolibro to set
      */
-    public void setAnolibro(Integer ano) {
-        this.anolibro = ano;
-    }
-
-    /**
-     * @return the idaccesorio
-     */
-    public Integer getIdaccesorio() {
-        return idaccesorio;
-    }
-
-    /**
-     * @param idaccesorio the idaccesorio to set
-     */
-    public void setIdaccesorio(Integer idaccesorio) {
-        this.idaccesorio = idaccesorio;
-    }
-
-    /**
-     * @return the tipoaccesorio
-     */
-    public String getTipoaccesorio() {
-        return tipoaccesorio;
-    }
-
-    /**
-     * @param tipoaccesorio the tipoaccesorio to set
-     */
-    public void setTipoaccesorio(String tipoaccesorio) {
-        this.tipoaccesorio = tipoaccesorio;
-    }
-
-    /**
-     * @return the nombreaccesorio
-     */
-    public String getNombreaccesorio() {
-        return nombreaccesorio;
-    }
-
-    /**
-     * @param nombreaccesorio the nombreaccesorio to set
-     */
-    public void setNombreaccesorio(String nombreaccesorio) {
-        this.nombreaccesorio = nombreaccesorio;
-    }
-
-    /**
-     * @return the marcaaccesorio
-     */
-    public String getMarcaaccesorio() {
-        return marcaaccesorio;
-    }
-
-    /**
-     * @param marcaaccesorio the marcaaccesorio to set
-     */
-    public void setMarcaaccesorio(String marcaaccesorio) {
-        this.marcaaccesorio = marcaaccesorio;
-    }
-
-    /**
-     * @return the idinstrumento
-     */
-    public Integer getIdinstrumento() {
-        return idinstrumento;
-    }
-
-    /**
-     * @param idinstrumento the idinstrumento to set
-     */
-    public void setIdinstrumento(Integer idinstrumento) {
-        this.idinstrumento = idinstrumento;
-    }
-
-    /**
-     * @return the anoinstrumento
-     */
-    public Integer getAnoinstrumento() {
-        return anoinstrumento;
-    }
-
-    /**
-     * @param anoinstrumento the anoinstrumento to set
-     */
-    public void setAnoinstrumento(Integer anoinstrumento) {
-        this.anoinstrumento = anoinstrumento;
-    }
-
-    /**
-     * @return the marcainstrumento
-     */
-    public String getMarcainstrumento() {
-        return marcainstrumento;
-    }
-
-    /**
-     * @param marcainstrumento the marcainstrumento to set
-     */
-    public void setMarcainstrumento(String marcainstrumento) {
-        this.marcainstrumento = marcainstrumento;
-    }
-
-    /**
-     * @return the tipoinstrumento
-     */
-    public String getTipoinstrumento() {
-        return tipoinstrumento;
-    }
-
-    /**
-     * @param tipoinstrumento the tipoinstrumento to set
-     */
-    public void setTipoinstrumento(String tipoinstrumento) {
-        this.tipoinstrumento = tipoinstrumento;
-    }
-
-    /**
-     * @return the nombreinstrumento
-     */
-    public String getNombreinstrumento() {
-        return nombreinstrumento;
-    }
-
-    /**
-     * @param nombreinstrumento the nombreinstrumento to set
-     */
-    public void setNombreinstrumento(String nombreinstrumento) {
-        this.nombreinstrumento = nombreinstrumento;
+    public void setAnolibro(Integer anolibro) {
+        this.anolibro = anolibro;
     }
 
     /**
@@ -605,6 +602,64 @@ public class MBArticulo {
     public void setMarcasonido(String marcasonido) {
         this.marcasonido = marcasonido;
     }
+
+    /**
+     * @return the idaccesorio
+     */
+    public Integer getIdaccesorio() {
+        return idaccesorio;
+    }
+
+    /**
+     * @param idaccesorio the idaccesorio to set
+     */
+    public void setIdaccesorio(Integer idaccesorio) {
+        this.idaccesorio = idaccesorio;
+    }
+
+    /**
+     * @return the tipoaccesorio
+     */
+    public String getTipoaccesorio() {
+        return tipoaccesorio;
+    }
+
+    /**
+     * @param tipoaccesorio the tipoaccesorio to set
+     */
+    public void setTipoaccesorio(String tipoaccesorio) {
+        this.tipoaccesorio = tipoaccesorio;
+    }
+
+    /**
+     * @return the nombreaccesorio
+     */
+    public String getNombreaccesorio() {
+        return nombreaccesorio;
+    }
+
+    /**
+     * @param nombreaccesorio the nombreaccesorio to set
+     */
+    public void setNombreaccesorio(String nombreaccesorio) {
+        this.nombreaccesorio = nombreaccesorio;
+    }
+
+    /**
+     * @return the marcaaccesorio
+     */
+    public String getMarcaaccesorio() {
+        return marcaaccesorio;
+    }
+
+    /**
+     * @param marcaaccesorio the marcaaccesorio to set
+     */
+    public void setMarcaaccesorio(String marcaaccesorio) {
+        this.marcaaccesorio = marcaaccesorio;
+    }
+
+    
 
     /**
      * @return the imagen

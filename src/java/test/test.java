@@ -5,11 +5,15 @@
  */
 package test;
 
+import Controlador.ArticuloDaoHibernate;
 import Controlador.UsuarioDaoHibernate;
 import Controlador.TelefonoDaoHibernate;
 import Controlador.ContrasenaDaoHibernate;
+import Controlador.InstrumentoDaoHibernate;
+import DAO.Articulo;
 import DAO.Usuario;
 import DAO.Contrasena;
+import DAO.Instrumento;
 import DAO.Telefono;
 import java.util.List;
 
@@ -43,7 +47,9 @@ public class test {
         Telefono telefono = new Telefono();
         Contrasena contrasena = new Contrasena();
         
-        usuario.setCorreo("NOsalazar@gmail.com");
+        Instrumento instrumento = new Instrumento();
+        
+        usuario.setCorreo("bobs@gmail.com");
         usuario.setNombre("AntiRodrigo");
         usuario.setApepaterno("Salazar");
         usuario.setApematerno("Delgado");
@@ -68,8 +74,32 @@ public class test {
         contrasenaDao.save(contrasena);
         System.out.println("Todo salio bien con el tercer insert");
         
-        usuarioDao.delete(usuario);
-        System.out.println("Todo salio bien con el delete");
+                ArticuloDaoHibernate articuloDao = new ArticuloDaoHibernate();
+        
+        Articulo articulo = new Articulo();
+        articulo.setIdarticulo(100);
+        articulo.setUsuario(usuario);
+        articulo.setDisponible(true);
+        articulo.setDescripcion("Mi artículo es muy bueno y se encuentra en un buen estado");
+        articuloDao.save(articulo);
+        
+        System.out.println("Todo salio bien con el cuarto insert");
+        
+        
+        //Instrumento
+            InstrumentoDaoHibernate instrumentoDAO = new InstrumentoDaoHibernate();
+            instrumento.setArticulo(articulo);
+            instrumento.setIdinstrumento(1);
+            instrumento.setNombreinstrumento("guitarra");
+            instrumento.setMarca("fender");
+            instrumento.setAno(1984);
+            instrumento.setTipo("acustico");
+            instrumentoDAO.save(instrumento);
+        
+        System.out.println("Todo salio bien con el quinto insert");
+        
+        
+        
     }
     
 }
