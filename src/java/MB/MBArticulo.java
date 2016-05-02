@@ -199,7 +199,10 @@ public class MBArticulo {
             articuloDAO.save(tmp);
             
            //Instrumento
+<<<<<<< HEAD
             if (idinstrumento != null){  
+=======
+>>>>>>> 1d5410549852cb833543713f67bf44f093b7ff18
             InstrumentoDaoHibernate instrumentoDAO = new InstrumentoDaoHibernate();
             tmp1.setArticulo(tmp);
             tmp1.setIdinstrumento(idinstrumento);
@@ -208,10 +211,16 @@ public class MBArticulo {
             tmp1.setAno(anoinstrumento);
             tmp1.setTipo(tipoinstrumento);
             instrumentoDAO.save(tmp1);
+<<<<<<< HEAD
             setMsn("El articulo se ha guardado satisfactoriamente");
             }
             //Libro
             if (idlibro != null){  
+=======
+            setMsn("El articulo se ha creado satisfactoriamente");
+            
+            //Libro
+>>>>>>> 1d5410549852cb833543713f67bf44f093b7ff18
             LibroDaoHibernate libroDAO = new LibroDaoHibernate();
             tmp2.setArticulo(tmp);
             tmp2.setIdlibro(idlibro);
@@ -221,10 +230,15 @@ public class MBArticulo {
             tmp2.setGenero(generolibro);
             tmp2.setAno(anolibro);
             libroDAO.save(tmp2);
+<<<<<<< HEAD
             setMsn("El articulo se ha guardado satisfactoriamente");
             }
             //Musica
             if (idmusica != null){  
+=======
+            setMsn("El articulo se ha creado satisfactoriamente");
+            //Musica
+>>>>>>> 1d5410549852cb833543713f67bf44f093b7ff18
             MusicaDaoHibernate musicaDAO = new MusicaDaoHibernate();
             tmp3.setArticulo(tmp);
             tmp3.setIdmusica(idmusica);
@@ -233,10 +247,15 @@ public class MBArticulo {
             tmp3.setGenero(generomusica);
             tmp3.setAno(anomusica);
             musicaDAO.save(tmp3);
+<<<<<<< HEAD
             setMsn("El articulo se ha guardado satisfactoriamente");
             }
             //Sonido
             if (idsonido != null){  
+=======
+            setMsn("El articulo se ha creado satisfactoriamente");
+            //Sonido
+>>>>>>> 1d5410549852cb833543713f67bf44f093b7ff18
             SonidoDaoHibernate sonidoDAO = new SonidoDaoHibernate();
             tmp4.setArticulo(tmp);
             tmp4.setIdsonido(idsonido);
@@ -245,9 +264,14 @@ public class MBArticulo {
             tmp4.setPotencia(potenciasonido);
             tmp4.setTipo(tiposonido);
             sonidoDAO.save(tmp4);
+<<<<<<< HEAD
             setMsn("El articulo se ha guardado satisfactoriamente");}
             //Accesorio
             if (idaccesorio != null){  
+=======
+            setMsn("El articulo se ha creado satisfactoriamente");
+            //Accesorio
+>>>>>>> 1d5410549852cb833543713f67bf44f093b7ff18
             AccesorioDaoHibernate accesorioDAO = new AccesorioDaoHibernate();
             tmp5.setArticulo(tmp);
             tmp5.setIdaccesorio(idaccesorio);
@@ -255,9 +279,16 @@ public class MBArticulo {
             tmp5.setMarca(marcaaccesorio);
             tmp5.setTipo(tipoaccesorio);
             accesorioDAO.save(tmp5);
+<<<<<<< HEAD
             setMsn("El articulo se ha guardado satisfactoriamente");}
             
             
+=======
+            
+
+            
+            setMsn("El articulo se ha creado satisfactoriamente");
+>>>>>>> 1d5410549852cb833543713f67bf44f093b7ff18
         } catch (Exception e) {
         e.printStackTrace();
             System.out.println("Hubo un error al intentar crear el articulo" + e);
