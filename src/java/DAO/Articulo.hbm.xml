@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/04/2016 04:25:15 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/04/2016 03:15:58 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.Articulo" table="articulo" schema="public" optimistic-lock="version">
         <id name="idarticulo" type="integer">
             <column name="idarticulo" precision="131089" scale="0" />
             <generator class="assigned" />
         </id>
+        <many-to-one name="usuario" class="DAO.Usuario" fetch="select">
+            <column name="correo" length="50" />
+        </many-to-one>
         <property name="disponible" type="boolean">
             <column name="disponible" not-null="true" />
         </property>
@@ -51,12 +54,7 @@
             </key>
             <one-to-many class="DAO.Accesorio" />
         </set>
-        <set name="partituras" table="partitura" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="idarticulo" precision="131089" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="DAO.Partitura" />
-        </set>
+        
         <set name="sonidos" table="sonido" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idarticulo" precision="131089" scale="0" not-null="true" />

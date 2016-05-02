@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/04/2016 04:25:15 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/04/2016 03:15:58 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.Usuario" table="usuario" schema="public" optimistic-lock="version">
         <id name="correo" type="string">
@@ -26,12 +26,18 @@
         <property name="delegacion" type="string">
             <column name="delegacion" length="30" />
         </property>
-        <property name="numero" type="integer">
-            <column name="numero" precision="131089" scale="0" />
+        <property name="numero" type="java.lang.Integer">
+            <column name="numero" />
         </property>
-        <property name="codigopostal" type="integer">
-            <column name="codigopostal" precision="131089" scale="0" />
+        <property name="codigopostal" type="java.lang.Integer">
+            <column name="codigopostal" />
         </property>
+        <set name="articulos" table="articulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="correo" length="50" />
+            </key>
+            <one-to-many class="DAO.Articulo" />
+        </set>
         <one-to-one name="presta" class="DAO.Presta"></one-to-one>
         <one-to-one name="solicita" class="DAO.Solicita"></one-to-one>
         <one-to-one name="prestigioconsumidor" class="DAO.Prestigioconsumidor"></one-to-one>

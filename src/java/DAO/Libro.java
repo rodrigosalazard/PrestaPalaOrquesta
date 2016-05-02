@@ -1,8 +1,7 @@
 package DAO;
-// Generated 13/04/2016 04:25:11 PM by Hibernate Tools 4.3.1
+// Generated 26/04/2016 03:15:50 PM by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -11,23 +10,23 @@ import java.util.Date;
 public class Libro  implements java.io.Serializable {
 
 
-     private BigDecimal idlibro;
+     private int idlibro;
      private Articulo articulo;
      private String editorial;
      private String nombreautor;
      private String nombre;
      private String genero;
-     private Date ano;
+     private int ano;
 
     public Libro() {
     }
 
 	
-    public Libro(BigDecimal idlibro, Articulo articulo) {
+    public Libro(Integer idlibro, Articulo articulo) {
         this.idlibro = idlibro;
         this.articulo = articulo;
     }
-    public Libro(BigDecimal idlibro, Articulo articulo, String editorial, String nombreautor, String nombre, String genero, Date ano) {
+    public Libro(Integer idlibro, Articulo articulo, String editorial, String nombreautor, String nombre, String genero, Integer ano) {
        this.idlibro = idlibro;
        this.articulo = articulo;
        this.editorial = editorial;
@@ -37,11 +36,11 @@ public class Libro  implements java.io.Serializable {
        this.ano = ano;
     }
    
-    public BigDecimal getIdlibro() {
+    public Integer getIdlibro() {
         return this.idlibro;
     }
     
-    public void setIdlibro(BigDecimal idlibro) {
+    public void setIdlibro(Integer idlibro) {
         this.idlibro = idlibro;
     }
     public Articulo getArticulo() {
@@ -79,11 +78,11 @@ public class Libro  implements java.io.Serializable {
     public void setGenero(String genero) {
         this.genero = genero;
     }
-    public Date getAno() {
+    public Integer getAno() {
         return this.ano;
     }
     
-    public void setAno(Date ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 

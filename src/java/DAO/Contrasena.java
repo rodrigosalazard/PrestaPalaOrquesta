@@ -1,5 +1,5 @@
 package DAO;
-// Generated 13/04/2016 04:25:11 PM by Hibernate Tools 4.3.1
+// Generated 26/04/2016 03:15:50 PM by Hibernate Tools 4.3.1
 
 
 
@@ -12,7 +12,6 @@ public class Contrasena  implements java.io.Serializable {
      private String correo;
      private Usuario usuario;
      private String contrasena;
-     private String msn;
 
     public Contrasena() {
     }
@@ -43,24 +42,7 @@ public class Contrasena  implements java.io.Serializable {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
-    public String toString(){
-        return "correo:   " + this.correo +" contrasena: " + this.contrasena ;
-    }
 
-    /**
-     * @return the msn
-     */
-    public String getMsn() {
-        return msn;
-    }
-
-    /**
-     * @param msn the msn to set
-     */
-    public void setMsn(String msn) {
-        this.msn = msn;
-    }
 
 
 

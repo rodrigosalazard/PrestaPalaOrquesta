@@ -12,7 +12,6 @@
     <mapping resource="DAO/Estado.hbm.xml"/>
     <mapping resource="DAO/Contrasena.hbm.xml"/>
     <mapping resource="DAO/Telefono.hbm.xml"/>
-    <mapping resource="DAO/Partitura.hbm.xml"/>
     <mapping resource="DAO/Prestigioconsumidor.hbm.xml"/>
     <mapping resource="DAO/Accesorio.hbm.xml"/>
     <mapping resource="DAO/Solicita.hbm.xml"/>

@@ -1,5 +1,5 @@
 package DAO;
-// Generated 13/04/2016 04:25:11 PM by Hibernate Tools 4.3.1
+// Generated 26/04/2016 03:15:50 PM by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 public class Accesorio  implements java.io.Serializable {
 
 
-     private BigDecimal idaccesorio;
+     private Integer idaccesorio;
      private Articulo articulo;
      private String tipo;
      private String nombre;
@@ -20,12 +20,12 @@ public class Accesorio  implements java.io.Serializable {
     }
 
 	
-    public Accesorio(BigDecimal idaccesorio, Articulo articulo, String tipo) {
+    public Accesorio(Integer idaccesorio, Articulo articulo, String tipo) {
         this.idaccesorio = idaccesorio;
         this.articulo = articulo;
         this.tipo = tipo;
     }
-    public Accesorio(BigDecimal idaccesorio, Articulo articulo, String tipo, String nombre, String marca) {
+    public Accesorio(Integer idaccesorio, Articulo articulo, String tipo, String nombre, String marca) {
        this.idaccesorio = idaccesorio;
        this.articulo = articulo;
        this.tipo = tipo;
@@ -33,11 +33,11 @@ public class Accesorio  implements java.io.Serializable {
        this.marca = marca;
     }
    
-    public BigDecimal getIdaccesorio() {
+    public Integer getIdaccesorio() {
         return this.idaccesorio;
     }
     
-    public void setIdaccesorio(BigDecimal idaccesorio) {
+    public void setIdaccesorio(Integer idaccesorio) {
         this.idaccesorio = idaccesorio;
     }
     public Articulo getArticulo() {

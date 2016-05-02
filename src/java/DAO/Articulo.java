@@ -1,7 +1,8 @@
 package DAO;
-// Generated 13/04/2016 04:25:11 PM by Hibernate Tools 4.3.1
+// Generated 26/04/2016 03:15:50 PM by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,9 +13,9 @@ public class Articulo  implements java.io.Serializable {
 
 
      private Integer idarticulo;
+     private Usuario usuario;
      private boolean disponible;
      private String descripcion;
-     
      private Set libros = new HashSet(0);
      private Set instrumentos = new HashSet(0);
      private Set prestas = new HashSet(0);
@@ -22,7 +23,7 @@ public class Articulo  implements java.io.Serializable {
      private Set solicitas = new HashSet(0);
      private Estado estado;
      private Set accesorios = new HashSet(0);
-     private Set partituras = new HashSet(0);
+     
      private Set sonidos = new HashSet(0);
 
     public Articulo() {
@@ -34,11 +35,11 @@ public class Articulo  implements java.io.Serializable {
         this.disponible = disponible;
         this.descripcion = descripcion;
     }
-    public Articulo(Integer idarticulo, boolean disponible, String descripcion, byte[] imagen, Set libros, Set instrumentos, Set prestas, Set musicas, Set solicitas, Estado estado, Set accesorios, Set partituras, Set sonidos) {
+    public Articulo(Integer idarticulo, Usuario usuario, boolean disponible, String descripcion, Set libros, Set instrumentos, Set prestas, Set musicas, Set solicitas, Estado estado, Set accesorios, Set sonidos) {
        this.idarticulo = idarticulo;
+       this.usuario = usuario;
        this.disponible = disponible;
        this.descripcion = descripcion;
-       
        this.libros = libros;
        this.instrumentos = instrumentos;
        this.prestas = prestas;
@@ -46,7 +47,7 @@ public class Articulo  implements java.io.Serializable {
        this.solicitas = solicitas;
        this.estado = estado;
        this.accesorios = accesorios;
-       this.partituras = partituras;
+       
        this.sonidos = sonidos;
     }
    
@@ -56,6 +57,13 @@ public class Articulo  implements java.io.Serializable {
     
     public void setIdarticulo(Integer idarticulo) {
         this.idarticulo = idarticulo;
+    }
+    public Usuario getUsuario() {
+        return this.usuario;
+    }
+    
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     public boolean isDisponible() {
         return this.disponible;
@@ -71,7 +79,6 @@ public class Articulo  implements java.io.Serializable {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
     public Set getLibros() {
         return this.libros;
     }
@@ -121,13 +128,7 @@ public class Articulo  implements java.io.Serializable {
     public void setAccesorios(Set accesorios) {
         this.accesorios = accesorios;
     }
-    public Set getPartituras() {
-        return this.partituras;
-    }
     
-    public void setPartituras(Set partituras) {
-        this.partituras = partituras;
-    }
     public Set getSonidos() {
         return this.sonidos;
     }

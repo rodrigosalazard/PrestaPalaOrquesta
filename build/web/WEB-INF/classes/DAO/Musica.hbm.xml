@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 13/04/2016 04:25:15 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 26/04/2016 03:15:58 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="DAO.Musica" table="musica" schema="public" optimistic-lock="version">
-        <id name="idmusica" type="big_decimal">
+        <id name="idmusica" type="integer">
             <column name="idmusica" precision="131089" scale="0" />
             <generator class="assigned" />
         </id>
@@ -17,7 +17,7 @@
         <property name="genero" type="string">
             <column name="genero" length="50" />
         </property>
-        <property name="ano" type="date">
+        <property name="ano" type="integer">
             <column name="ano" length="13" />
         </property>
         <property name="formato" type="string">
